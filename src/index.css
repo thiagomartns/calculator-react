@@ -35,9 +35,10 @@
 
 .calculator-body {
   background-color: #111c30;
-  height: 45vh;
+  height: 65vh;
   width: 45vw;
-  max-width: 512px;
+  max-width: 400px;
+  max-height: 500px;
   border-radius: 8px;
 }
 
