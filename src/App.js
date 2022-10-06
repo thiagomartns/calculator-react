@@ -4,9 +4,10 @@ function App() {
 
   const [userNumber, setUserNumber] = useState(0)
   const [operator, setOperator] = useState()
+  const [firstNumber, setFirstNumber] = useState(0)
   
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-  const ops = ['/', '*', '-', '+']
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '.']
+  const ops = ['/', 'X', '-', '+']
 
   const inputNum = e => {
     const input = e.target.value
@@ -20,8 +21,20 @@ function App() {
   const operatorHandler = e => {
     const operatorInput = e.target.value
     setOperator(operatorInput)
-    const firstNumber = userNumber
+    setFirstNumber(userNumber)
     setUserNumber(0)
+  }
+
+  const calculate = () => {
+    if (operator === '/') {
+      setUserNumber(parseFloat(firstNumber) / parseFloat(userNumber))
+    } else if (operator === 'X') {
+      setUserNumber(parseFloat(firstNumber) * parseFloat(userNumber))
+    } else if (operator === '-') {
+      setUserNumber(parseFloat(firstNumber) - parseFloat(userNumber))
+    } else if (operator === '+') {
+      setUserNumber(parseFloat(firstNumber) + parseFloat(userNumber))
+    }
   }
 
   const clear = () => {
@@ -39,24 +52,28 @@ function App() {
             <span>{userNumber}</span>
           </div>
           <div className="calculator-operators">
-            <button onClick={operatorHandler} >/</button>
-            <button onClick={operatorHandler} >x</button>
-            <button onClick={operatorHandler} >-</button>
-            <button onClick={operatorHandler} >+</button>
+            {ops.map((op, index) => (
+              <button 
+                onClick={operatorHandler}
+                key={index} 
+                value={op}
+              >
+                {op}
+              </button>
+            ))}
             <button onClick={clear} >del</button>
           </div>
           <div className="calculator-numbers">
             {numbers.map((number, index) => (
               <button 
-                id={index}
+                key={index}
                 value={number}
                 onClick={inputNum}
               >
                 {number}
               </button>
             ))}
-            <button>,</button>
-            <button>=</button>
+            <button onClick={calculate}>=</button>
           </div>
         </div>
       </div>
