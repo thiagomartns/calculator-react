@@ -24,6 +24,7 @@
   width: 100vh;
   padding: 5rem;
   gap: 5rem;
+  max-width: 1200px;
 }
 
 .calculator-container .calculator-h1 {
@@ -35,11 +36,12 @@
 
 .calculator-body {
   background-color: #111c30;
-  height: 65vh;
+  height: 70vh;
   width: 45vw;
   max-width: 400px;
-  max-height: 500px;
+  max-height: 420px;
   border-radius: 8px;
+  margin: 0 auto;
 }
 
 .calculator-screen {
