@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Operators from "./components/Operators";
+import Numbers from "./components/Number";
 
 function App() {
 
@@ -52,27 +54,17 @@ function App() {
             <span>{userNumber}</span>
           </div>
           <div className="calculator-operators">
-            {ops.map((op, index) => (
-              <button 
-                onClick={operatorHandler}
-                key={index} 
-                value={op}
-              >
-                {op}
-              </button>
-            ))}
-            <button onClick={clear} >del</button>
+            <Operators 
+              operatorHandler={operatorHandler} 
+              clear={clear} 
+              ops={ops} 
+            />
           </div>
           <div className="calculator-numbers">
-            {numbers.map((number, index) => (
-              <button 
-                key={index}
-                value={number}
-                onClick={inputNum}
-              >
-                {number}
-              </button>
-            ))}
+            <Numbers 
+              inputNum={inputNum} 
+              numbers={numbers} 
+            />
             <button onClick={calculate}>=</button>
           </div>
         </div>
